@@ -21,14 +21,14 @@
     
     <section class="showcase-area container-fluid full" id="home">
         <div class="container anmd" style="padding-top: 150px;" id="home">
-            <div class="topic">Nurse</div>
+            <div class="topic">Vendor</div>
             <center><a href="#about" class="btn2" style="text-decoration: none;">Go to list</a></center>
         </div>
     </section>
 
     <section class="about section" id="about">
         <div class="container anmd" id="home">
-            <h3 class="heading" style="font-size: 40px; margin-bottom: 90px;">List of Nurses</h3>
+            <h3 class="heading" style="font-size: 40px; margin-bottom: 90px;">List of Vendors</h3>
             <div class="container my-5">
                 <table class="table">
                     <thead>
@@ -87,7 +87,7 @@
                 </table>
                 <br />
                 <br />
-                <a href="doctor/create.php" class="btn btn-primary" role="button">New Doctor</a>
+                <a href="doctor/create.php" class="btn btn-primary" role="button">New Vendor</a>
                 <a href="/Database%20Assignment/index.php#about" class="btn btn-primary" role="button">Go to menu</a>
             </div>
         </div>

@@ -47,7 +47,7 @@
                     <a href="attendent.php" class="btn1" style="text-decoration: none;">Attendent</a><br />
                     <a href="clearner.[h[" class="btn1" style="text-decoration: none;">Cleaner</a><br />
                     <a href="patient.php" class="btn1" style="text-decoration: none;">Patient</a><br />
-                    <a href="patient.php" class="btn1" style="text-decoration: none;">Patient</a>
+                    <a href="patient.php" class="btn1" style="text-decoration: none;">Vendor</a>
                 </center>
         </div>
     </section>
