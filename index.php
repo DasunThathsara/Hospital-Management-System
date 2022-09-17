@@ -42,7 +42,7 @@
         <div class="container anmd" id="home">
                 <h3 class="heading" style="font-size: 40px; margin-bottom: 90px;">Menu</h3>
                 <center>
-                    <a href="/Database%20Assignment/doctor.php" class="btn1" style="text-decoration: none;">Doctor</a><br />
+                    <a href="doctor.php" class="btn1" style="text-decoration: none;">Doctor</a><br />
                     <a href="nurse.php" class="btn1" style="text-decoration: none;">Nurse</a><br />
                     <a href="attendent.php" class="btn1" style="text-decoration: none;">Attendent</a><br />
                     <a href="clearner.[h[" class="btn1" style="text-decoration: none;">Cleaner</a><br />
