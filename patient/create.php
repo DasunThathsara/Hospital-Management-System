@@ -9,46 +9,53 @@
 
 
     $name = "";
-    $address = "";
-    $tel = "";
-    $did = 0;
+    $PID = "";
+    $BID = "";
+    $WID = "";
+    $type = "";
 
     $errorMessage = "";
     $successMessage = "";
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $name = $_POST["name"];
-        $address = $_POST["address"];
-        $tel = $_POST["tel"];
-        $did = $_POST["did"];
+        $PID = $_POST["PID"];
+        $BID = $_POST["BID"];
+        $WID = $_POST["WID"];
+        $type = $_POST["type"];
 
         do{
-            if(empty($name) || empty($address) || empty($tel) || empty($did)){
+            if(empty($name) || empty($BID) || empty($PID) || empty($WID) || empty($type)){
                 $errorMessage = "All the fields are rquired";
                 break;
             }
 
 
-            // Add new doctor to database
+            // Add new patient to database
 
-            $sql = "INSERT INTO doctor(name, address, tel, did)" .
-                    "VALUES ('$name', '$address', '$tel', $did)";
+            $sql1 = "INSERT INTO patient(PID, name)" .
+                    "VALUES ($PID, '$name')";
 
-            $result = $connection->query($sql);
+            $sql2 = "INSERT INTO in_patient(PID, type, BID, WID)" .
+                    "VALUES ($PID, '$name', $BID, $WID)";
 
-            if(!$result){
+            $result1 = $connection->query($sql1);
+            $result2 = $connection->query($sql2);
+
+            if(!$result1 && !$result2){
                 $errorMessage = "Invalid query : " . $connection->error;
                 break;
             }
 
             $name = "";
-            $address = "";
-            $tel = "";
-            $did = 0;
+            $PID = "";
+            $BID = "";
+            $WID = "";
+            $type = "";
 
-            $successMessage = "Doctor aded successfully";
+            $successMessage = "Patient aded successfully";
 
-            header("location: /Database%20Assignment/doctor.php#about");
+            header("location: /Database%20Assignment/patient.php#about");
             exit;
 
         }while (false);
@@ -76,10 +83,99 @@
 <body>
     <header>
     </header>
+
+    <section class="showcase-area container-fluid full" id="home">
+        <div class="container anmd" style="padding-top: 150px;" id="home">
+                <div class="topic">Patient</div>
+                <center>
+                    <a href="#about1" class="btn2" style="text-decoration: none;">In Patient</a>
+                    &nbsp;&nbsp;
+                    <a href="#about2" class="btn2" style="text-decoration: none;">In Patient</a>
+                </center>
+        </div>
+    </section>
     
-    <section class="about section" id="about">
+    <section class="about section" id="about1">
         <div class="container anmd" id="home">
-            <h3 class="heading" style="font-size: 40px; margin-bottom: 90px;">Add Doctor</h3>
+            <h3 class="heading" style="font-size: 40px; margin-bottom: 90px;">Add In Patient</h3>
+
+            <div class="container my-5">
+                <?php
+                    if(!empty($errorMessage)){
+                        echo "
+                            <div class='alert-warning alert-dismissible fade show' role='alert'>
+                                <strong>$errorMessage</strong>
+                            </div>
+                        ";
+                    }
+                ?>
+                <form method="post">
+                <div class="row mb-3">
+                        <lable class="col-sm-3 col-form-lable">Patient ID</lable>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="PID" value="<?php echo $PID; ?>" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <lable class="col-sm-3 col-form-lable">Name</lable>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="name" value="<?php echo $name; ?>" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <lable class="col-sm-3 col-form-lable">Bed ID</lable>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="BID" value="<?php echo $BID; ?>" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <lable class="col-sm-3 col-form-lable">Ward ID</lable>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="WID" value="<?php echo $WID; ?>" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <input type="text" hidden class="form-control" name="type" value="in" />
+                        </div>
+                    </div>
+
+                    <?php
+                        if(!empty($successMessage)){
+                            echo "
+                                <div class='row mb-3'>
+                                    <div class='row mb-3 col-sm-12'>
+                                        <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                                            <strong>$successMessage</strong>
+                                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-lable='Close'></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ";
+                        }
+                    ?>                    
+
+                    <div class="row mb-3">
+                        <div class="offset-sm-3 col-sm-3 d-grid">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+
+                        <div class="offset-sm-3 col-sm-3 d-grid">
+                            <a href="/Database%20Assignment/doctor.php" class="btn btn-outline-primary">Back to list</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="about section" id="about2">
+        <div class="container anmd" id="home">
+            <h3 class="heading" style="font-size: 40px; margin-bottom: 90px;">Add Out Patient</h3>
 
             <div class="container my-5">
                 <?php
