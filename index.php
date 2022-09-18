@@ -21,18 +21,6 @@
     
     <section class="showcase-area container-fluid full" id="home">
         <div class="container anmd" style="padding-top: 150px;" id="home">
-                <!--form method="get">
-                    First Name : <input type="text" name="Fname"/><br />
-                    Last Name : <input type="text" name="Lname"/><br />
-                <input type="submit" value="Submit" class="btn btnh"/><br />
-                </form-->
-                <!--?php
-                    $c = 0;
-                    $fname = $_GET['Fname'];
-                    $lname = $_GET['Lname'];
-                    $fname .= " $lname";
-                    echo "Hello $fname";
-                ?-->
                 <div class="topic">Welcome</div>
                 <center><a href="#about" class="btn2" style="text-decoration: none;">Go to menu</a></center>
         </div>
@@ -47,7 +35,7 @@
                     <a href="attendent.php" class="btn1" style="text-decoration: none;">Attendent</a><br />
                     <a href="clearner.[h[" class="btn1" style="text-decoration: none;">Cleaner</a><br />
                     <a href="patient.php" class="btn1" style="text-decoration: none;">Patient</a><br />
-                    <a href="patient.php" class="btn1" style="text-decoration: none;">Vendor</a>
+                    <a href="vendor.php" class="btn1" style="text-decoration: none;">Vendor</a>
                 </center>
         </div>
     </section>

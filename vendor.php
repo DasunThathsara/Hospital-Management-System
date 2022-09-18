@@ -33,11 +33,10 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>Reg Number</th>
                             <th>Name</th>
                             <th>Address</th>
-                            <th>Tel</th>
-                            <th>DEI ID</th>
+                            <th>Telephone</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -55,11 +54,11 @@
 
                             // Check connection
                             if($connection->connect_error){
-                                die("COnnection failed : " . $connection->connect_error);
+                                die("Connection failed : " . $connection->connect_error);
                             }
 
                             // Read all row from database table
-                            $sql = "SELECT * FROM doctor";
+                            $sql = "SELECT * FROM vendor";
                             $result = $connection->query($sql);
 
                             if(!$result){
@@ -70,14 +69,13 @@
                             while($row = $result->fetch_assoc()){
                                 echo "
                                     <tr>
-                                        <td>$row[id]</td>
+                                        <td>$row[regNo]</td>
                                         <td>$row[name]</td>
                                         <td>$row[address]</td>
                                         <td>$row[tel]</td>
-                                        <td>$row[did]</td>
                                         <td>
-                                            <a href='doctor/edit.php?id=$row[id]' class='btn btn-primary btn-sm'>Edit</a>
-                                            <a href='doctor/delete.php?id=$row[id]' class='btn btn-primary btn-sm'>Delete</a>
+                                            <a href='vendor/edit.php?regNo=$row[regNo]' class='btn btn-primary btn-sm'>Edit</a>
+                                            <a href='vendor/delete.php?regNo=$row[regNo]' class='btn btn-primary btn-sm'>Delete</a>
                                         </td>
                                     </tr>
                                 ";
@@ -87,7 +85,7 @@
                 </table>
                 <br />
                 <br />
-                <a href="doctor/create.php" class="btn btn-primary" role="button">New Vendor</a>
+                <a href="vendor/create.php" class="btn btn-primary" role="button">New Vendor</a>
                 <a href="/Database%20Assignment/index.php#about" class="btn btn-primary" role="button">Go to menu</a>
             </div>
         </div>
