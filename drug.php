@@ -21,7 +21,7 @@
     
     <section class="showcase-area container-fluid full" id="home">
         <div class="container anmd" style="padding-top: 150px;" id="home">
-            <div class="topic">Vendor</div>
+            <div class="topic">Drug</div>
             <center><a href="#about" class="btn2" style="text-decoration: none;">Go to list</a></center>
         </div>
     </section>
@@ -86,7 +86,6 @@
                 <br />
                 <br />
                 <a href="vendor/create.php" class="btn btn-primary" role="button">New Vendor</a>
-                <a href="drug/create.php" class="btn btn-primary" role="button">Add Drug</a>
                 <a href="/Database%20Assignment/index.php#about" class="btn btn-primary" role="button">Go to menu</a>
             </div>
         </div>
