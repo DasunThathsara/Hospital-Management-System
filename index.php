@@ -22,7 +22,7 @@
     <section class="showcase-area container-fluid full" id="home">
         <div class="container anmd" style="padding-top: 150px;" id="home">
                 <div class="topic">Welcome</div>
-                <center><a href="#about" class="btn2" style="text-decoration: none;">Go to menu</a></center>
+                <center><a href="#about" class="btn2" style="text-decoration: none; font-size: 20px;">Go to menu</a></center>
         </div>
     </section>
 
