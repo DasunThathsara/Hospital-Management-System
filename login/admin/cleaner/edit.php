@@ -9,11 +9,14 @@
 
 
 
-    $id = "";
+    $empNo = "";
     $name = "";
     $address = "";
     $tel = "";
-    $did = "";
+    $working_status = "";
+    $contractNo = "";
+    $start_date = "";
+    $end_date = "";
 
     $errorMessage = "";
     $successMessage = "";

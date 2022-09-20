@@ -10,10 +10,16 @@
         // Create connection
         $connection = new mysqli($servername, $username, $password, $database);
 
-        $sql = "DELETE FROM doctor WHERE id=$id";
+        $sql = "DELETE FROM cleaner WHERE empNo=$id";
+        $connection->query($sql);
+
+        $sql = "DELETE FROM non_medical_employee WHERE empNo=$id";
+        $connection->query($sql);
+
+        $sql = "DELETE FROM employee WHERE empNo=$id";
         $connection->query($sql);
     }
     
-    header("location: /Database%20Assignment/doctor.php#about");
+    header("location: /Database%20Assignment/login/admin/clearner.php#about");
     exit;
 ?>

@@ -33,7 +33,7 @@
                     <a href="/Database%20Assignment/login/admin/doctor.php" class="btn1" style="text-decoration: none;">Doctor</a><br />
                     <a href="/Database%20Assignment/login/admin/nurse.php" class="btn1" style="text-decoration: none;">Nurse</a><br />
                     <a href="/Database%20Assignment/login/admin/attendent.php" class="btn1" style="text-decoration: none;">Attendent</a><br />
-                    <a href="/Database%20Assignment/login/admin/clearner.[h[" class="btn1" style="text-decoration: none;">Cleaner</a><br />
+                    <a href="/Database%20Assignment/login/admin/clearner.php" class="btn1" style="text-decoration: none;">Cleaner</a><br />
                     <a href="/Database%20Assignment/login/admin/patient.php" class="btn1" style="text-decoration: none;">Patient</a><br />
                     <a href="/Database%20Assignment/login/admin/vendor.php" class="btn1" style="text-decoration: none;">Vendor</a>
                 </center>

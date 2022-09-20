@@ -8,31 +8,41 @@
     $connection = new mysqli($servername, $username, $password, $database);
 
 
+    $empNo = "";
     $name = "";
     $address = "";
     $tel = "";
-    $did = 0;
+    $working_status = "";
+    $contractNo = "";
+    $start_date = "";
+    $end_date = "";
 
     $errorMessage = "";
     $successMessage = "";
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $empNo = $_POST["empNo"];
         $name = $_POST["name"];
         $address = $_POST["address"];
         $tel = $_POST["tel"];
-        $did = $_POST["did"];
+        $working_status = $_POST["working_status"];
+        $contractNo = $_POST["contractNo"];
+        $start_date = $_POST["start_date"];
+        $end_date = $_POST["end_date"];
 
         do{
-            if(empty($name) || empty($address) || empty($tel) || empty($did)){
+            if(empty($empNo) || empty($address) || empty($tel) || empty($working_status) || empty($contractNo) || empty($start_date) || empty($end_date)){
                 $errorMessage = "All the fields are rquired";
                 break;
             }
 
 
-            // Add new doctor to database
+            // Add new cleaner to database
 
-            $sql = "INSERT INTO doctor(name, address, tel, did)" .
-                    "VALUES ('$name', '$address', '$tel', $did)";
+            
+            //--------------------------------
+            $sql = "INSERT INTO employee(empNo, name, addresss, tel, working_status)" .
+                    "VALUES ($empNo, '$name', '$address', '$tel', '$working_status')";
 
             $result = $connection->query($sql);
 
@@ -41,14 +51,42 @@
                 break;
             }
 
+            
+
+            //--------------------------------
+            $sql = "INSERT INTO non_medical_employee(empNo, type)" .
+                    "VALUES ($empNo, 'cleaner')";
+
+            $result = $connection->query($sql);
+
+            if(!$result){
+                $errorMessage = "Invalid query : " . $connection->error;
+                break;
+            }
+
+            //--------------------------------
+            $sql = "INSERT INTO cleaner(empNo, contractNo, start_date, end_date)" .
+                    "VALUES ($empNo, '$contractNo', '$start_date', '$end_date')";
+
+            $result = $connection->query($sql);
+
+            if(!$result){
+                $errorMessage = "Invalid query : " . $connection->error;
+                break;
+            }
+
+
+            $empNo = "";
             $name = "";
             $address = "";
             $tel = "";
-            $did = 0;
+            $contractNo = "";
+            $start_date = "";
+            $end_date = "";
 
-            $successMessage = "Doctor aded successfully";
+            $successMessage = "CLeaner aded successfully";
 
-            header("location: /Database%20Assignment/doctor.php#about");
+            header("location: /Database%20Assignment/login/admin/clearner.php#about");
             exit;
 
         }while (false);
@@ -61,7 +99,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dasun Thathsara</title>
+    <title>Suwa Sahana</title>
 
     <!-------------------  external js  ------------------->
     <script src="https://unpkg.com/scrollreveal"></script>
@@ -79,7 +117,7 @@
     
     <section class="about section" id="about">
         <div class="container anmd" id="home">
-            <h3 class="heading" style="font-size: 40px; margin-bottom: 90px;">Add Doctor</h3>
+            <h3 class="heading" style="font-size: 40px; margin-bottom: 90px;">Add Cleaner</h3>
 
             <div class="container my-5">
                 <?php
@@ -93,30 +131,58 @@
                 ?>
                 <form method="post">
                     <div class="row mb-3">
-                        <lable class="col-sm-3 col-form-lable">Name</lable>
+                        <lable class="col-sm-3 col-form-lable">empNo</lable>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="empNo" value="<?php echo $empNo; ?>" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <lable class="col-sm-3 col-form-lable">name</lable>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" name="name" value="<?php echo $name; ?>" />
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <lable class="col-sm-3 col-form-lable">Address</lable>
+                        <lable class="col-sm-3 col-form-lable">address</lable>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" name="address" value="<?php echo $address; ?>" />
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <lable class="col-sm-3 col-form-lable">Tel</lable>
+                        <lable class="col-sm-3 col-form-lable">tel</lable>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" name="tel" value="<?php echo $tel; ?>" />
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <lable class="col-sm-3 col-form-lable">DID</lable>
+                        <lable class="col-sm-3 col-form-lable">working_status</lable>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="did" value="<?php echo $did; ?>" />
+                            <input type="text" class="form-control" name="working_status" value="<?php echo $working_status; ?>" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <lable class="col-sm-3 col-form-lable">Contract Number</lable>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="contractNo" value="<?php echo $contractNo; ?>" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <lable class="col-sm-3 col-form-lable">Start Date</lable>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control" name="start_date" value="<?php echo $start_date; ?>" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <lable class="col-sm-3 col-form-lable">End Date</lable>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control" name="end_date" value="<?php echo $end_date; ?>" />
                         </div>
                     </div>
 
@@ -141,7 +207,7 @@
                         </div>
 
                         <div class="offset-sm-3 col-sm-3 d-grid">
-                            <a href="/Database%20Assignment/doctor.php" class="btn btn-outline-primary">Back to list</a>
+                            <a href="/Database%20Assignment/login/admin/clearner.php" class="btn btn-outline-primary">Back to list</a>
                         </div>
                     </div>
                 </form>
