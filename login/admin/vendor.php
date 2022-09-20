@@ -86,7 +86,7 @@
                 <br />
                 <br />
                 <a href="/Database%20Assignment/login/admin/vendor/create.php" class="btn btn-primary" role="button">New Vendor</a>
-                <a href="/Database%20Assignment/login/admin/drug/create.php" class="btn btn-primary" role="button">Add Drug</a>
+                <a href="/Database%20Assignment/login/admin/drug.php" class="btn btn-primary" role="button">Drug</a>
                 <a href="/Database%20Assignment/login/admin/dashboard.php" class="btn btn-primary" role="button">Go to menu</a>
             </div>
         </div>

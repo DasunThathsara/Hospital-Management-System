@@ -8,22 +8,30 @@
     $connection = new mysqli($servername, $username, $password, $database);
 
 
-    $regNo = "";
+    $dCode = "";
     $name = "";
-    $address = "";
-    $tel = "";
+    $type = "";
+    $UP = "";
+    $regNo = "";
+    $qty = "";
+    $date = "";
+    $total = "";
 
     $errorMessage = "";
     $successMessage = "";
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $regNo = $_POST["regNo"];
+        $dCode = $_POST["dCode"];
         $name = $_POST["name"];
-        $address = $_POST["address"];
-        $tel = $_POST["tel"];
+        $type = $_POST["type"];
+        $UP = $_POST["UP"];
+        $regNo = $_POST["regNo"];
+        $qty = $_POST["qty"];
+        $date = $_POST["date"];
+        $total = $qty * $UP;
 
         do{
-            if(empty($regNo) || empty($name) || empty($address) || empty($tel)){
+            if(empty($dCode) || empty($name) || empty($type) || empty($UP) || empty($regNo) || empty($qty) || empty($date)){
                 $errorMessage = "All the fields are rquired";
                 break;
             }
@@ -31,24 +39,33 @@
 
             // Add new vendor_drug to database
 
-            $sql = "INSERT INTO vendor_drug(regNo, name, address, tel)" .
-                    "VALUES ($regNo, '$name', '$address', '$tel')";
+            $sql = "INSERT INTO drug_vendor(regNo, dCode, qty, UP, date, total)" .
+                    "VALUES ($regNo, $dCode, $qty, $UP, '$date', $total)";
 
+            $sql1 = "INSERT INTO drug(dCode, name, type, UP)" .
+                    "VALUES ($dCode, '$name', '$type', $UP)";
+
+            $result1 = $connection->query($sql1);
             $result = $connection->query($sql);
+            
 
-            if(!$result){
+            if(!$result && !$result1){
                 $errorMessage = "Invalid query : " . $connection->error;
                 break;
             }
 
-            $regNo = "";
+            $dCode = "";
             $name = "";
-            $address = "";
-            $tel = "";
+            $type = "";
+            $UP = "";
+            $regNo = "";
+            $qty = "";
+            $date = "";
+            $total = "";
 
             $successMessage = "vendor_drug aded successfully";
 
-            header("location: /Database%20Assignment/vendor_drug.php#about");
+            header("location: /Database%20Assignment/login/admin/drug.php");
             exit;
 
         }while (false);
@@ -61,7 +78,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dasun Thathsara</title>
+    <title>Suwa Sewana</title>
 
     <!-------------------  external js  ------------------->
     <script src="https://unpkg.com/scrollreveal"></script>
@@ -93,9 +110,9 @@
                 ?>
                 <form method="post">
                     <div class="row mb-3">
-                        <lable class="col-sm-3 col-form-lable">Reg Number</lable>
+                        <lable class="col-sm-3 col-form-lable">Drug Code</lable>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="regNo" value="<?php echo $regNo; ?>" />
+                            <input type="text" class="form-control" name="dCode" value="<?php echo $dCode; ?>" />
                         </div>
                     </div>
 
@@ -107,16 +124,37 @@
                     </div>
 
                     <div class="row mb-3">
-                        <lable class="col-sm-3 col-form-lable">Address</lable>
+                        <lable class="col-sm-3 col-form-lable">Type</lable>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="address" value="<?php echo $address; ?>" />
+                            <input type="text" class="form-control" name="type" value="<?php echo $type; ?>" />
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <lable class="col-sm-3 col-form-lable">Tel</lable>
+                        <lable class="col-sm-3 col-form-lable">UP</lable>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="tel" value="<?php echo $tel; ?>" />
+                            <input type="text" class="form-control" name="UP" value="<?php echo $UP; ?>" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <lable class="col-sm-3 col-form-lable">Vendor Reg No</lable>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="regNo" value="<?php echo $regNo; ?>" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <lable class="col-sm-3 col-form-lable">Qty</lable>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="qty" value="<?php echo $qty; ?>" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <lable class="col-sm-3 col-form-lable">date</lable>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control" name="date" value="<?php echo $date; ?>" />
                         </div>
                     </div>
 

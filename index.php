@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dasun Thathsara</title>
+    <title>Suwa Sewana</title>
 
     <!-------------------  external js  ------------------->
     <script src="https://unpkg.com/scrollreveal"></script>
@@ -26,7 +26,6 @@
             <center>
                 <a href="login/doctor.php" class="btn1" style="text-decoration: none;">Doctor</a><br />
                 <a href="login/nurse.php" class="btn1" style="text-decoration: none;">Nurse</a><br />
-                <a href="login/vendor.php" class="btn1" style="text-decoration: none;">Vendor</a><br />
                 <a href="login/admin.php" class="btn1" style="text-decoration: none;">Administrator</a>
             </center>
         </div>

@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dasun Thathsara</title>
+    <title>Suwa Sahana</title>
 
     <!-------------------  external js  ------------------->
     <script src="https://unpkg.com/scrollreveal"></script>
 
     <!-------------------  external css  ------------------->
-    <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="stylesheet" href="/Database%20Assignment/CSS/style.css" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -33,7 +33,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>PID</th>
                             <th>Type</th>
                             <th>Ward ID</th>
                             <th>Bed ID</th>
@@ -79,10 +79,6 @@
                                         <td>$row[BID]</td>
                                         <td>$row[WID]</td>
                                         <td>$row[name]</td>
-                                        <td>
-                                            <a href='patient/edit.php?id=$row[PID]' class='btn btn-primary btn-sm'>Edit</a>
-                                            <a href='patient/delete.php?id=$row[PID]' class='btn btn-primary btn-sm'>Delete</a>
-                                        </td>
                                     </tr>
                                 ";
                             }
@@ -91,12 +87,11 @@
                 </table>
                 <br />
                 <br />
-                <a href="patient/create.php" class="btn btn-primary" role="button">New Patient</a>
-                <a href="/Database%20Assignment/index.php#about" class="btn btn-primary" role="button">Go to menu</a>
+                <a href="/Database%20Assignment/login/users/nurse/dashboard.php" class="btn btn-primary" role="button">Go to menu</a>
             </div>
         </div>
     </section>
 
-    <script src="JavaScript/script.js"></script>
+    <script src="/Database%20Assignment/JavaScript/script.js"></script>
 </body>
 </html>

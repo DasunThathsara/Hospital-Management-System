@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/scrollreveal"></script>
 
     <!-------------------  external css  ------------------->
-    <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="stylesheet" href="/Database%20Assignment/CSS/style.css" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -30,16 +30,17 @@
         <div class="container anmd" id="home">
                 <h3 class="heading" style="font-size: 40px; margin-bottom: 90px;">Menu</h3>
                 <center>
-                    <a href="doctor.php" class="btn1" style="text-decoration: none;">Doctor</a><br />
-                    <a href="nurse.php" class="btn1" style="text-decoration: none;">Nurse</a><br />
-                    <a href="attendent.php" class="btn1" style="text-decoration: none;">Attendent</a><br />
-                    <a href="clearner.[h[" class="btn1" style="text-decoration: none;">Cleaner</a><br />
-                    <a href="patient.php" class="btn1" style="text-decoration: none;">Patient</a><br />
-                    <a href="vendor.php" class="btn1" style="text-decoration: none;">Vendor</a>
+                    <a href="/Database%20Assignment/login/users/doctor/doctor.php" class="btn1" style="text-decoration: none;">Doctor</a><br />
+                    <a href="/Database%20Assignment/login/users/doctor/nurse.php" class="btn1" style="text-decoration: none;">Nurse</a><br />
+                    <a href="/Database%20Assignment/login/users/doctor/attendent.php" class="btn1" style="text-decoration: none;">Attendent</a><br />
+                    <a href="/Database%20Assignment/login/users/doctor/clearner.php" class="btn1" style="text-decoration: none;">Cleaner</a><br />
+                    <a href="/Database%20Assignment/login/users/doctor/patient.php" class="btn1" style="text-decoration: none;">Patient</a><br />
+                    <a href="/Database%20Assignment/login/users/doctor/vendor.php" class="btn1" style="text-decoration: none;">Vendor</a>
+                    <a href="/Database%20Assignment/index.php" class="btn1" style="text-decoration: none;">Logout</a>
                 </center>
         </div>
     </section>
 
-    <script src="JavaScript/script.js"></script>
+    <script src="/Database%20Assignment/JavaScript/script.js"></script>
 </body>
 </html>

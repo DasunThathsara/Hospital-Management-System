@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dasun Thathsara</title>
+    <title>Suwa Sahana</title>
 
     <!-------------------  external js  ------------------->
     <script src="https://unpkg.com/scrollreveal"></script>
@@ -37,6 +37,7 @@
                             <th>Name</th>
                             <th>Address</th>
                             <th>Telephone</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -80,7 +81,8 @@
                 </table>
                 <br />
                 <br />
-                <a href="/Database%20Assignment/login/doctor.php#about" class="btn btn-primary" role="button">Go to menu</a>
+                <a href="/Database%20Assignment/login/users/doctor/drug.php" class="btn btn-primary" role="button">Drug</a>
+                <a href="/Database%20Assignment/login/users/doctor/dashboard.php" class="btn btn-primary" role="button">Go to menu</a>
             </div>
         </div>
     </section>

@@ -9,46 +9,51 @@
 
 
     $name = "";
-    $address = "";
-    $tel = "";
-    $did = 0;
+    $PID = "";
+    $DID = "";
 
     $errorMessage = "";
     $successMessage = "";
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $name = $_POST["name"];
-        $address = $_POST["address"];
-        $tel = $_POST["tel"];
-        $did = $_POST["did"];
+        $PID = $_POST["PID"];
+        $DID = $_POST["DID"];
 
         do{
-            if(empty($name) || empty($address) || empty($tel) || empty($did)){
+            if(empty($name) || empty($DID) || empty($PID)){
                 $errorMessage = "All the fields are rquired";
                 break;
             }
 
 
-            // Add new doctor to database
+            // Add new patient to database
 
-            $sql = "INSERT INTO doctor(name, address, tel, did)" .
-                    "VALUES ('$name', '$address', '$tel', $did)";
+            $sql1 = "INSERT INTO patient(PID, name, type)" .
+                    "VALUES ($PID, '$name', 'out')";
 
-            $result = $connection->query($sql);
+            $sql2 = "INSERT INTO out_patient(PID, DID)" .
+                    "VALUES ($PID, $DID)";
+            
+            //$sql3 = "INSERT INTO doctor_patient(empNo, PID)" .
+            //        "VALUES ($empNo, $PID)";
 
-            if(!$result){
+            $result1 = $connection->query($sql1);
+            $result2 = $connection->query($sql2);
+            //$result3 = $connection->query($sql3);
+
+            if(!$result1 && !$result2){
                 $errorMessage = "Invalid query : " . $connection->error;
                 break;
             }
 
             $name = "";
-            $address = "";
-            $tel = "";
-            $did = 0;
+            $PID = "";
+            $DID = "";
 
-            $successMessage = "Doctor aded successfully";
+            $successMessage = "Patient aded successfully";
 
-            header("location: /Database%20Assignment/doctor.php#about");
+            header("location: /Database%20Assignment/login/admin/patient.php#about");
             exit;
 
         }while (false);
@@ -61,7 +66,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dasun Thathsara</title>
+    <title>Suwa Sahana</title>
 
     <!-------------------  external js  ------------------->
     <script src="https://unpkg.com/scrollreveal"></script>
@@ -76,10 +81,19 @@
 <body>
     <header>
     </header>
+
+    <section class="showcase-area container-fluid full" id="home">
+        <div class="container anmd" style="padding-top: 150px;" id="home">
+                <div class="topic">Patient</div>
+                <center>
+                    <a href="#about1" class="btn2" style="text-decoration: none;">Out Patient</a>
+                </center>
+        </div>
+    </section>
     
-    <section class="about section" id="about">
+    <section class="about section" id="about1">
         <div class="container anmd" id="home">
-            <h3 class="heading" style="font-size: 40px; margin-bottom: 90px;">Add Doctor</h3>
+            <h3 class="heading" style="font-size: 40px; margin-bottom: 90px;">Add Out Patient</h3>
 
             <div class="container my-5">
                 <?php
@@ -92,6 +106,13 @@
                     }
                 ?>
                 <form method="post">
+                <div class="row mb-3">
+                        <lable class="col-sm-3 col-form-lable">Patient ID</lable>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="PID" value="<?php echo $PID; ?>" />
+                        </div>
+                    </div>
+
                     <div class="row mb-3">
                         <lable class="col-sm-3 col-form-lable">Name</lable>
                         <div class="col-sm-6">
@@ -100,25 +121,12 @@
                     </div>
 
                     <div class="row mb-3">
-                        <lable class="col-sm-3 col-form-lable">Address</lable>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" name="address" value="<?php echo $address; ?>" />
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <lable class="col-sm-3 col-form-lable">Tel</lable>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" name="tel" value="<?php echo $tel; ?>" />
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
                         <lable class="col-sm-3 col-form-lable">DID</lable>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="did" value="<?php echo $did; ?>" />
+                            <input type="text" class="form-control" name="DID" value="<?php echo $DID; ?>" />
                         </div>
                     </div>
+
 
                     <?php
                         if(!empty($successMessage)){
@@ -141,7 +149,7 @@
                         </div>
 
                         <div class="offset-sm-3 col-sm-3 d-grid">
-                            <a href="/Database%20Assignment/doctor.php" class="btn btn-outline-primary">Back to list</a>
+                            <a href="/Database%20Assignment/login/admin/patient.php" class="btn btn-outline-primary">Back to list</a>
                         </div>
                     </div>
                 </form>

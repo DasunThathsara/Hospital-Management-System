@@ -5,7 +5,7 @@
         $name = $_POST['name'];
         $password = $_POST['regNo'];
 
-        if($name = "admin" && $password == 1234){
+        if($name == "admin" && $password == 1234){
             header("location: /Database%20Assignment/login/admin/dashboard.php");
             exit;
         }
