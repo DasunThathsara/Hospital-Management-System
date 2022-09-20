@@ -21,22 +21,23 @@
     
     <section class="showcase-area container-fluid full" id="home">
         <div class="container anmd" style="padding-top: 150px;" id="home">
-            <div class="topic">Vendor</div>
+            <div class="topic">Patient</div>
             <center><a href="#about" class="btn2" style="text-decoration: none;">Go to list</a></center>
         </div>
     </section>
 
     <section class="about section" id="about">
         <div class="container anmd" id="home">
-            <h3 class="heading" style="font-size: 40px; margin-bottom: 90px;">List of Vendors</h3>
+            <h3 class="heading" style="font-size: 40px; margin-bottom: 90px;">List of Patients</h3>
             <div class="container my-5">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Reg Number</th>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Ward ID</th>
+                            <th>Bed ID</th>
                             <th>Name</th>
-                            <th>Address</th>
-                            <th>Telephone</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -58,7 +59,11 @@
                             }
 
                             // Read all row from database table
-                            $sql = "SELECT * FROM vendor";
+                            $sql = "SELECT in_patient.*, patient.name 
+                                    FROM in_patient
+                                    INNER JOIN patient
+                                    ON patient.PID = in_patient.PID;";
+
                             $result = $connection->query($sql);
 
                             if(!$result){
@@ -69,13 +74,14 @@
                             while($row = $result->fetch_assoc()){
                                 echo "
                                     <tr>
-                                        <td>$row[regNo]</td>
+                                        <td>$row[PID]</td>
+                                        <td>$row[type]</td>
+                                        <td>$row[BID]</td>
+                                        <td>$row[WID]</td>
                                         <td>$row[name]</td>
-                                        <td>$row[address]</td>
-                                        <td>$row[tel]</td>
                                         <td>
-                                            <a href='vendor/edit.php?regNo=$row[regNo]' class='btn btn-primary btn-sm'>Edit</a>
-                                            <a href='vendor/delete.php?regNo=$row[regNo]' class='btn btn-primary btn-sm'>Delete</a>
+                                            <a href='patient/edit.php?id=$row[PID]' class='btn btn-primary btn-sm'>Edit</a>
+                                            <a href='patient/delete.php?id=$row[PID]' class='btn btn-primary btn-sm'>Delete</a>
                                         </td>
                                     </tr>
                                 ";
@@ -85,8 +91,7 @@
                 </table>
                 <br />
                 <br />
-                <a href="vendor/create.php" class="btn btn-primary" role="button">New Vendor</a>
-                <a href="drug/create.php" class="btn btn-primary" role="button">Add Drug</a>
+                <a href="patient/create.php" class="btn btn-primary" role="button">New Patient</a>
                 <a href="/Database%20Assignment/index.php#about" class="btn btn-primary" role="button">Go to menu</a>
             </div>
         </div>

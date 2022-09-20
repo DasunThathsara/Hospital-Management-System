@@ -1,6 +1,6 @@
 <?php
-    if(isset($_GET["regNo"])){
-        $regNo = $_GET["regNo"];
+    if(isset($_GET["id"])){
+        $id = $_GET["id"];
 
         $servername = "localhost";
         $username = "root";
@@ -10,10 +10,10 @@
         // Create connection
         $connection = new mysqli($servername, $username, $password, $database);
 
-        $sql = "DELETE FROM vendor WHERE regNo=$regNo";
+        $sql = "DELETE FROM doctor WHERE id=$id";
         $connection->query($sql);
     }
     
-    header("location: /Database%20Assignment/vendor.php#about");
+    header("location: /Database%20Assignment/doctor.php#about");
     exit;
 ?>

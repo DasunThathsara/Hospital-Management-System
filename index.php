@@ -20,23 +20,15 @@
     </header>
     
     <section class="showcase-area container-fluid full" id="home">
-        <div class="container anmd" style="padding-top: 150px;" id="home">
-                <div class="topic">Welcome</div>
-                <center><a href="#about" class="btn2" style="text-decoration: none; font-size: 20px;">Go to menu</a></center>
-        </div>
-    </section>
-
-    <section class="about section" id="about">
         <div class="container anmd" id="home">
-                <h3 class="heading" style="font-size: 40px; margin-bottom: 90px;">Menu</h3>
-                <center>
-                    <a href="doctor.php" class="btn1" style="text-decoration: none;">Doctor</a><br />
-                    <a href="nurse.php" class="btn1" style="text-decoration: none;">Nurse</a><br />
-                    <a href="attendent.php" class="btn1" style="text-decoration: none;">Attendent</a><br />
-                    <a href="clearner.[h[" class="btn1" style="text-decoration: none;">Cleaner</a><br />
-                    <a href="patient.php" class="btn1" style="text-decoration: none;">Patient</a><br />
-                    <a href="vendor.php" class="btn1" style="text-decoration: none;">Vendor</a>
-                </center>
+            <div class="topic">Login</div>
+            <br />
+            <center>
+                <a href="login/doctor.php" class="btn1" style="text-decoration: none;">Doctor</a><br />
+                <a href="login/nurse.php" class="btn1" style="text-decoration: none;">Nurse</a><br />
+                <a href="login/vendor.php" class="btn1" style="text-decoration: none;">Vendor</a><br />
+                <a href="login/admin.php" class="btn1" style="text-decoration: none;">Administrator</a>
+            </center>
         </div>
     </section>
 

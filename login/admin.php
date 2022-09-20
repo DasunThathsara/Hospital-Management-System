@@ -1,29 +1,13 @@
 <!--------------- PHP Code --------------->
 <?php
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "hospital";
-    
-    // Create connection
-    $connection = new mysqli($servername, $username, $password, $database);
-    
-    // Check connection
-    if($connection->connect_error){
-        die("Connection failed : " . $connection->connect_error);
-    }
-
     if(isset($_POST['login'])){
         $name = $_POST['name'];
         $password = $_POST['regNo'];
 
-        $sql = "SELECT * FROM vendor WHERE name='{$name}' AND regNo='{$password}' LIMIT 1";
-
-        $result = $connection->query($sql);
-        if(mysqli_num_rows($result) == 1){
-            echo "Successffully logged";
-            exit();
+        if($name = "admin" && $password == 1234){
+            header("location: /Database%20Assignment/login/admin/dashboard.php");
+            exit;
         }
         else{
             echo "Invalid username or password";
@@ -53,7 +37,7 @@
 <body>
     <section class="showcase-area container-fluid full" id="home">
         <div class="container anmd" id="home">
-            <h3 class="heading" style="font-size: 40px; margin-bottom: 90px;">Vendor Login</h3>
+            <h3 class="heading" style="font-size: 40px; margin-bottom: 90px;">Admin Login</h3>
             <div class="container my-5">
             <form method="post">
                 <div class="row mb-3">

@@ -8,6 +8,7 @@
     $connection = new mysqli($servername, $username, $password, $database);
 
 
+
     $regNo = "";
     $name = "";
     $address = "";
@@ -16,7 +17,34 @@
     $errorMessage = "";
     $successMessage = "";
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if($_SERVER['REQUEST_METHOD'] == 'GET'){
+        // GET method: show the data of the vendor
+
+        if(!isset($_GET["regNo"])){
+            header("location: /Database%20Assignment/login/admin/vendor.php#about");
+            exit;
+        }
+
+        $regNo = $_GET["regNo"];
+
+        // REad row of the selected vendor from database table
+        $sql = "SELECT * FROM vendor WHERE regNo=$regNo";
+        $result = $connection->query($sql);
+        $row = $result->fetch_assoc();
+
+        if(!$row){
+            header("location: /Database%20Assignment/login/admin/vendor.php#about");
+            exit;
+        }
+
+        $regNo = $row["regNo"];
+        $name = $row["name"];
+        $address = $row["address"];
+        $tel = $row["tel"];
+
+    }
+    else{
+        // POST method: Update the data of the vendor
         $regNo = $_POST["regNo"];
         $name = $_POST["name"];
         $address = $_POST["address"];
@@ -28,30 +56,23 @@
                 break;
             }
 
-
-            // Add new vendor to database
-
-            $sql = "INSERT INTO vendor(regNo, name, address, tel)" .
-                    "VALUES ($regNo, '$name', '$address', '$tel')";
+            $sql = "UPDATE vendor " .
+                    "SET regNo=$regNo, name = '$name', address = '$address', tel = '$tel' " .
+                    "WHERE regNo=$regNo";
 
             $result = $connection->query($sql);
 
             if(!$result){
-                $errorMessage = "Invalid query : " . $connection->error;
+                $errorMessage = "Invalid query: " . $connection->error;
                 break;
             }
 
-            $regNo = "";
-            $name = "";
-            $address = "";
-            $tel = "";
+            $successMessage = "Vendor updated successfully";
 
-            $successMessage = "Vendor aded successfully";
-
-            header("location: /Database%20Assignment/vendor.php#about");
+            header("location: /Database%20Assignment/login/admin/vendor.php#about");
             exit;
 
-        }while (false);
+        }while(false);
     }
 ?>
 
@@ -141,7 +162,7 @@
                         </div>
 
                         <div class="offset-sm-3 col-sm-3 d-grid">
-                            <a href="/Database%20Assignment/vendor.php" class="btn btn-outline-primary">Back to list</a>
+                            <a href="/Database%20Assignment/doctor.php" class="btn btn-outline-primary">Back to list</a>
                         </div>
                     </div>
                 </form>
