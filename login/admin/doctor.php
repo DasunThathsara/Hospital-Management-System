@@ -70,7 +70,8 @@
                                     JOIN medical_employee
                                     ON employee.empNo = medical_employee.empNo
                                     JOIN doctor
-                                    ON employee.empNo = doctor.empNo";
+                                    ON employee.empNo = doctor.empNo
+                                    WHERE medical_employee.type = 'doctor'";
                             $result = $connection->query($sql);
 
                             if(!$result){
@@ -91,7 +92,7 @@
                                         <th>$row[MCR]</th>
                                         <th>$row[joined_date]</th>
                                         <th>$row[resign_date]</th>
-                                        <th>$row[type]</th>
+                                        <th>Doctor</th>
                                         <td>
                                             <a href='/Database%20Assignment/login/admin/doctor/edit.php?id=$row[empNo]' class='btn btn-primary btn-sm'>Edit</a>
                                             <a href='/Database%20Assignment/login/admin/doctor/delete.php?id=$row[empNo]' class='btn btn-primary btn-sm'>Delete</a>

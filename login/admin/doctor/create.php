@@ -18,7 +18,6 @@
     $MCR = "";
     $joinned_date = "";
     $resign_date = "";
-    $type = "";
 
     $errorMessage = "";
     $successMessage = "";
@@ -28,16 +27,15 @@
         $speciality = $_POST["speciality"];
         $DEA = $_POST["DEA"];
         $name = $_POST["name"];
-        $address = $_POST["addresss"];
+        $address = $_POST["address"];
         $tel = $_POST["tel"];
         $working_status = $_POST["working_status"];
         $MCR = $_POST["MCR"];
-        $joinned_date = $_POST["joined_date"];
+        $joinned_date = $_POST["joinned_date"];
         $resign_date = $_POST["resign_date"];
-        $type = $_POST["type"];
 
         do{
-            if(empty($empNo) || empty($speciality) || empty($DEA) || empty($address) || empty($tel) || empty($working_status) || empty($MCR) || empty($joinned_date) || empty($resign_date) || empty($type)){
+            if(empty($empNo) || empty($speciality) || empty($DEA) || empty($address) || empty($tel) || empty($working_status) || empty($MCR) || empty($joinned_date) || empty($resign_date)){
                 $errorMessage = "All the fields are rquired";
                 break;
             }
@@ -61,7 +59,7 @@
 
             //--------------------------------
             $sql = "INSERT INTO medical_employee(empNo, MCR, joined_date, resign_date, type)" .
-                    "VALUES ($empNo, $MCR, '$joinned_date', '$resign_date', '$type')";
+                    "VALUES ($empNo, $MCR, '$joinned_date', '$resign_date', 'doctor')";
 
             $result = $connection->query($sql);
 
@@ -92,7 +90,6 @@
             $MCR = "";
             $joinned_date = "";
             $resign_date = "";
-            $type = "";
 
             $successMessage = "Doctor aded successfully";
 
@@ -207,13 +204,6 @@
                         <lable class="col-sm-3 col-form-lable">Resign Date</lable>
                         <div class="col-sm-6">
                             <input type="date" class="form-control" name="resign_date" value="<?php echo $resign_date; ?>" />
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <lable class="col-sm-3 col-form-lable">type</lable>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" name="type" value="<?php echo $type; ?>" />
                         </div>
                     </div>
 
