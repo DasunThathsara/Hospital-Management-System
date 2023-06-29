@@ -1,4 +1,4 @@
-# Database-Assignment
+# Hospital Management System
 
 
 <a href="https://databaseassignment1.herokuapp.com/">Site</a>
